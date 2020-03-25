@@ -221,7 +221,6 @@ void breadth_first_search(t_lem0 *st0)
 {
     t_lem1 *current_vertex;
     t_queue *queue;
-    // t_links *buff_links;
     t_queue *buff_queue;
     t_solution  *solution;
     // t_queue *deleter_queue;
@@ -281,7 +280,7 @@ void breadth_first_search(t_lem0 *st0)
         buff_keeper = buff_keeper->next;
     }
     printf("\n");
-    printf("%d\n", c);
+    // printf("%d\n", c);
     bfs_expand(st0);
     // // shortest_ways_free(st0);
     // calc_length(st0);

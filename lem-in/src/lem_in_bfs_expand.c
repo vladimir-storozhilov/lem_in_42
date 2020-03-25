@@ -318,22 +318,36 @@ bool breadth_first_search_cycle_finder_1(t_queue **queue,
     return false;
 }
 
-void link_deleter(t_links *link_1, t_links *link_2, t_lem1 **buff)
+void link_deleter(t_links *link_1, t_links *link_2, t_lem1 *buff_1, t_lem1 *buff_2)
 {
-    if (link_1)
+    if (buff_1->links == link_1)
     {
-        if (link_1->prev != 0)
-        {
-            // if ((*buff)->links == link_1)
-            //     (*buff)->links = link_1->prev;
-            link_1->prev->next = link_1->next;
-        }
+        buff_1->links = link_1->prev;
         free(link_1);
     }
-    if (link_2)
+    else if (link_1->prev != 0)
     {
-        if (link_2->prev != 0)
-            link_2->prev->next = link_2->next;
+        link_1->next->prev = link_1->prev;
+        free(link_1);
+    }
+    else
+    {
+        link_1->next->prev = 0;
+        free(link_1);
+    }
+    if (buff_2->links == link_2)
+    {
+        buff_2->links = link_2->prev;
+        free(link_2);
+    }
+    else if (link_2->prev != 0)
+    {
+        link_2->next->prev = link_2->prev;
+        free(link_2);
+    }
+    else
+    {
+        link_2->next->prev = 0;
         free(link_2);
     }
 }
@@ -358,7 +372,7 @@ void weight_zeroing(t_lem0 *st0)
                 while (buff_link_2->connection_room != buff)
                     buff_link_2 = buff_link_2->prev;
                 if (buff_link_2->weight == -1 && buff_link->weight == -1)
-                    link_deleter(buff_link, buff_link_2, &buff);
+                    link_deleter(buff_link, buff_link_2, buff, buff_link->connection_room);
                 else if (buff_link->weight == -1)
                     buff_link->weight = 0;
                 buff_link = buff_link->prev;

@@ -158,7 +158,7 @@ void	calc_moves(t_lem0 *lem0)
 			}
 		}
 		sol->moves = moves + sol->sol_links->length - 1;
-		ft_printf("%d\n", sol->moves);
+		// ft_printf("%d\n", sol->moves);
 		sol = sol->next;
 	}
 }
