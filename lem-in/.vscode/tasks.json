@@ -1,0 +1,36 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558 
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "gcc build active file",
+            "command": "/usr/bin/gcc",
+            "args": [
+                "-g",
+                "${workspaceFolder}/src/lem_in_bfs.c",
+                "${workspaceFolder}/src/lem_in_bfs_expand.c",
+                "${workspaceFolder}/src/lem_split.c",
+                "${workspaceFolder}/src/lem_atoi.c",
+                "${workspaceFolder}/src/move_ants_1.c",
+                "${workspaceFolder}/src/main.c",
+                "${workspaceFolder}/ft_printf/libftprintf.a",
+                "${workspaceFolder}/../get_next_line/get_next_line.c",
+                "${workspaceFolder}/../libft/*.c",
+                "-o",
+                "${workspaceFolder}/lem_in"
+            ],
+            "options": {
+                "cwd": "/usr/bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
