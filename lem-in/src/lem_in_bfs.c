@@ -266,23 +266,23 @@ void breadth_first_search(t_lem0 *st0)
     t_links *help;
     int c;
     c = 0;
-    while (buff_keeper)
-    {
-        help = buff_keeper->links;
-        while(help)
-        {
-            printf("%s ", help->connection_room->room_name);
-            if (help->connection_room != st0->end)
-                c++;
-            help = help->next;
-        }
-        printf("\n");
-        buff_keeper = buff_keeper->next;
-    }
-    printf("\n");
+    // while (buff_keeper)
+    // {
+    //     help = buff_keeper->links;
+    //     while(help)
+    //     {
+    //         printf("%s ", help->connection_room->room_name);
+    //         if (help->connection_room != st0->end)
+    //             c++;
+    //         help = help->next;
+    //     }
+    //     printf("\n");
+    //     buff_keeper = buff_keeper->next;
+    // }
+    // printf("\n");
     // printf("%d\n", c);
     bfs_expand(st0);
     // // shortest_ways_free(st0);
-    // calc_length(st0);
+    calc_length(st0);
     // printf("\n");
 }

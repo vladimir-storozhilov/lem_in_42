@@ -369,9 +369,9 @@ void weight_zeroing(t_lem0 *st0)
             while (buff_link)
             {
                 buff_link_2 = buff_link->connection_room->links;
-                while (buff_link_2->connection_room != buff)
+                while (buff_link_2 && buff_link_2->connection_room != buff)
                     buff_link_2 = buff_link_2->prev;
-                if (buff_link_2->weight == -1 && buff_link->weight == -1)
+                if (buff_link_2 && buff_link_2->weight == -1 && buff_link->weight == -1)
                     link_deleter(buff_link, buff_link_2, buff, buff_link->connection_room);
                 else if (buff_link->weight == -1)
                     buff_link->weight = 0;
@@ -562,19 +562,19 @@ void breadth_first_search_2(t_lem0 *st0)
         st0->solution->prev->sol_links = way_keeper;
         st0->solution = st0->solution->prev;
     }
-    t_links *help;
-    while (buff_keeper)
-    {
-        help = buff_keeper->links;
-        while(help)
-        {
-            printf("%s ",  help->connection_room->room_name);
-            help = help->next;
-        }
-        printf("\n");
-        buff_keeper = buff_keeper->next;
-    }
-    printf("\n");
+    // t_links *help;
+    // while (buff_keeper)
+    // {
+    //     help = buff_keeper->links;
+    //     while(help)
+    //     {
+    //         printf("%s ",  help->connection_room->room_name);
+    //         help = help->next;
+    //     }
+    //     printf("\n");
+    //     buff_keeper = buff_keeper->next;
+    // }
+    // printf("\n");
 }
 
 void bfs_expand(t_lem0 *st0)

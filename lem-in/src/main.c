@@ -340,7 +340,7 @@ void	parsing(char *av, int i, int j)
 		error_management(st0, "ERROR: no end\n");
 	if (st0->end->links == 0)
 		error_management(st0, "ERROR: no access to end\n");
-	print_subject(st0);
+	// print_subject(st0);
 	breadth_first_search(st0);
 }
 
