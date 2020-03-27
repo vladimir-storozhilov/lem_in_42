@@ -225,9 +225,9 @@ bool destroyed_link_checker(t_lem1 *current_vertex)
         if (buff_links->weight == -1)
         {
             buff_links_2 = buff_links->connection_room->links;
-            while (buff_links_2->connection_room != current_vertex)
+            while (buff_links_2 && buff_links_2->connection_room != current_vertex)
                 buff_links_2 = buff_links_2->prev;
-            if (buff_links_2->weight == -1)
+            if (buff_links_2 && buff_links_2->weight == -1)
                 return (true);
         }
         buff_links = buff_links->prev;
@@ -494,6 +494,24 @@ void    ways_creator_2(t_lem1 *current_vertex, t_lem0 *st0,
     }
 }
 
+void way_keeper_reverse(t_sol_links  **way_keeper)
+{
+    t_sol_links *buff_way;
+    t_sol_links *buff_way_2;
+
+    buff_way = *way_keeper;
+    while(buff_way->next)
+        buff_way = buff_way->next;
+    *way_keeper = buff_way;
+    buff_way_2 = buff_way;
+    while(buff_way)
+    {
+        buff_way_2->next = buff_way->prev;
+        buff_way_2 = buff_way_2->next;
+        buff_way = buff_way->prev;
+    }
+}
+
 void breadth_first_search_2(t_lem0 *st0)
 {
     t_lem1 *current_vertex;
@@ -553,6 +571,8 @@ void breadth_first_search_2(t_lem0 *st0)
         parents_deleter(st0);
         queue_deleter(buff_queue);
     }
+    if (way_keeper)
+        way_keeper_reverse(&way_keeper);
     if (j != 0)
     {
         buff_keeper = way_keeper;
