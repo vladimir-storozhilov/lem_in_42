@@ -60,6 +60,7 @@ t_links *new_link(t_links *prev, t_links *next, t_lem1 *connect)
 	link->prev = prev;
 	link->next = next;
 	link->connection_room = connect;
+	link->weight = 0;
 	return (link);
 }
 

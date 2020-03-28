@@ -263,9 +263,9 @@ void breadth_first_search(t_lem0 *st0)
     st0->solution->next = 0;
     st0->solution->prev = 0;
     st0->solution->sol_links = buff_keeper;
-    t_links *help;
-    int c;
-    c = 0;
+    // t_links *help;
+    // int c;
+    // c = 0;
     // while (buff_keeper)
     // {
     //     help = buff_keeper->links;

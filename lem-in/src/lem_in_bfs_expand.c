@@ -323,11 +323,15 @@ void link_deleter(t_links *link_1, t_links *link_2, t_lem1 *buff_1, t_lem1 *buff
     if (buff_1->links == link_1)
     {
         buff_1->links = link_1->prev;
+        if (buff_1->links != 0)
+            buff_1->links->next = 0;
+        // buff_1->links->next = 0;
         free(link_1);
     }
     else if (link_1->prev != 0)
     {
         link_1->next->prev = link_1->prev;
+        link_1->prev->next = link_1->next;
         free(link_1);
     }
     else
@@ -338,11 +342,15 @@ void link_deleter(t_links *link_1, t_links *link_2, t_lem1 *buff_1, t_lem1 *buff
     if (buff_2->links == link_2)
     {
         buff_2->links = link_2->prev;
+        if (buff_2->links != 0)
+            buff_2->links->next = 0;
+        // buff_2->links->next = 0;
         free(link_2);
     }
     else if (link_2->prev != 0)
     {
         link_2->next->prev = link_2->prev;
+        link_2->prev->next = link_2->next;
         free(link_2);
     }
     else
@@ -498,18 +506,46 @@ void way_keeper_reverse(t_sol_links  **way_keeper)
 {
     t_sol_links *buff_way;
     t_sol_links *buff_way_2;
+    t_sol_links *buff_way_3;
+    t_sol_links *buff_way_4;
+    int i;
 
     buff_way = *way_keeper;
     while(buff_way->next)
         buff_way = buff_way->next;
     *way_keeper = buff_way;
-    buff_way_2 = buff_way;
-    while(buff_way)
+    // buff_way_2 = buff_way;
+    i = 0;
+    // while(buff_way)
+    // {
+    //     buff_way_2->next = buff_way->prev;
+    //     buff_way_3 = buff_way_2;
+    //     // if (i != 0)
+    //     //     buff_way_2->prev = buff_way_3;
+    //     // // else
+    //     // //     buff_way_2->prev = buff_way_3;
+    //     buff_way = buff_way->prev;
+    //     buff_way_2 = buff_way_2->next;
+    //     i++;
+    // }
+    // (*way_keeper)->prev = 0;
+     while(buff_way)
     {
-        buff_way_2->next = buff_way->prev;
-        buff_way_2 = buff_way_2->next;
-        buff_way = buff_way->prev;
+        buff_way->next = buff_way->prev;
+        if (i == 0)
+            buff_way->prev = 0;
+        else
+            buff_way->prev = buff_way_2;
+        buff_way_2 = buff_way;
+        // if (i != 0)
+        //     buff_way_2->prev = buff_way_3;
+        // // else
+        // //     buff_way_2->prev = buff_way_3;
+        buff_way = buff_way->next;
+        // buff_way_2 = buff_way_2->next;
+        i++;
     }
+    // (*way_keeper)->prev = 0;
 }
 
 void breadth_first_search_2(t_lem0 *st0)

@@ -33,8 +33,7 @@ clean:
 fclean: clean
 	make fclean -C $(LIBFT_DIR)
 	make fclean -C $(PRINTF_DIR)
-	rm -f $(NAME_PS)
-	rm -f $(NAME_CHECK)
+	rm -f $(NAME)
 
 re: fclean all
 

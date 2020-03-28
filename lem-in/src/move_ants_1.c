@@ -115,7 +115,7 @@ void	move_ants(t_solution *solution, t_lem0 *lem0)
 				sol_link = sol_link->next;
 			}
 		}
-		// print_moves(solution);
+//		print_moves(solution);
 //		if (lem0->visualization)
 //			visualization(solution, lem0);
 		solution->moves -= 1;
@@ -147,6 +147,7 @@ void	calc_moves(t_lem0 *lem0)
 			}
 			else if (sol_link->next)
 			{
+				ft_printf("!!! %d !!!", sol_link->length);
 				counter++;
 				sol_link = sol_link->next;
 			}
@@ -158,7 +159,7 @@ void	calc_moves(t_lem0 *lem0)
 			}
 		}
 		sol->moves = moves + sol->sol_links->length - 1;
-		ft_printf("%d\n", sol->moves);
+		ft_printf("===%d\n", sol->moves);
 		sol = sol->next;
 	}
 }
