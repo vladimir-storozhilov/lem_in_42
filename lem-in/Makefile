@@ -10,10 +10,15 @@ INCL_H = lem_in.h
 INCL = $(addprefix $(INCL_DIR),$(INCL_H))
 
 SRC_DIR = src/
-SRC_C = lem_atoi.c lem_in_bfs.c lem_in_bfs_expand.c lem_split.c main.c move_ants_1.c
+SRC_C = lem_atoi.c lem_in_bfs.c lem_in_bfs_2.c lem_in_bfs_3.c\
+		lem_in_bfs_expand.c lem_split.c main.c move_ants_1.c\
+		lem_in_bfs_expand_2.c lem_in_bfs_expand_3.c\
+		lem_in_bfs_expand_4.c lem_in_bfs_expand_5.c\
+		lem_in_bfs_expand_6.c\
+
 SRC = $(addprefix $(SRC_DIR),$(SRC_C))
 
-FLAGS =	#-Wall -Werror -Wextra
+FLAGS =	-Wall -Werror -Wextra
 
 all: $(LIBFT_DIR)$(LIBFT) $(PRINTF_DIR)$(PRINTF) $(NAME)
 

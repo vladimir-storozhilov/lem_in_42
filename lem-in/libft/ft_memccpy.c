@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gtristan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gtapioca <gtapioca@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 10:37:01 by gtristan          #+#    #+#             */
-/*   Updated: 2019/09/13 18:44:21 by gtristan         ###   ########.fr       */
+/*   Updated: 2020/03/31 00:22:37 by gtapioca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 		if (src1[i] == a)
 		{
 			i++;
-			return (&(dst[i]));
+			return (&(dst1[i]));
 		}
 		i++;
 	}

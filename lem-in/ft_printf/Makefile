@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gtristan <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: gtapioca <gtapioca@student.21-school.ru    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/17 13:58:43 by gtristan          #+#    #+#              #
-#    Updated: 2020/01/17 17:54:48 by gtristan         ###   ########.fr        #
+#    Updated: 2020/03/31 00:24:40 by gtapioca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ OBJ_DIR = obj/
 OBJ_O = $(SRC_C:%.c=%.o)
 OBJ = $(addprefix $(OBJ_DIR),$(OBJ_O))
 
-FLAGS =	#-Wall -Werror -Wextra
+FLAGS =	-Wall -Werror -Wextra
 
 all: $(OBJ_DIR) $(NAME)
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_countwords.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gtristan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gtapioca <gtapioca@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 16:50:49 by gtristan          #+#    #+#             */
-/*   Updated: 2019/09/13 17:31:21 by gtristan         ###   ########.fr       */
+/*   Updated: 2020/03/31 00:23:23 by gtapioca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 int	ft_countwords(char *s)
 {
-	size_t	i;
 	size_t	j;
 
-	i = 0;
 	j = 0;
 	while (*s)
 	{

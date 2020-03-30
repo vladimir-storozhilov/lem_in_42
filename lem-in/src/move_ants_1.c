@@ -70,10 +70,10 @@ void	move_ants2(t_sol_links *sol_link, int antnum)
 	link->ant_number = antnum;
 }
 
-void	visualisation(t_solution *solution, t_lem0 *lem0)
-{
+// void	visualisation(t_solution *solution, t_lem0 *lem0)
+// {
 
-}
+// }
 
 void	move_ants(t_solution *solution, t_lem0 *lem0)
 {

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gtristan <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: gtapioca <gtapioca@student.21-school.ru    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 09:18:49 by gtristan          #+#    #+#              #
-#    Updated: 2020/01/22 15:01:00 by gtristan         ###   ########.fr        #
+#    Updated: 2020/03/31 00:20:42 by gtapioca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ DEST = $(SOURCE:%.c=%.o)
 
 NAME = libft.a
 
-FLAGS = #-Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
