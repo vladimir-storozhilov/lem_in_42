@@ -110,9 +110,12 @@ int		check_ants(t_lem0 *st0, char *line)
 	j = 0;
 	if (!line || !*line)
 		error_management(st0, "ERROR: no or empty line\n");
-	if (*line == '#' && *(line + 1) == '#')
+	if (*line == '#')
 	{
-		instructions(st0, line, 0);
+	    if (*(line + 1) == '#')
+		{
+	        instructions(st0, line, 0);
+		}
 		return (0);
 	}
 	st0->ants = atoi_lem(line, st0);
@@ -160,6 +163,17 @@ int		hash_func(char *str)
 	return (i);
 }
 
+int     check_dupl_room(t_lem1 *room, char *name)
+{
+    while (room)
+    {
+        if (!(ft_strcmp(room->room_name, name)))
+            return (1);
+        room = room->prev;
+    }
+    return (0);
+}
+
 int 	check_rooms2(t_lem0 *st0, char *line, int j)
 {
 	char	**arr;
@@ -184,8 +198,13 @@ int 	check_rooms2(t_lem0 *st0, char *line, int j)
 		st0->lem1[i] = new_lem1(arr[0], NULL, NULL);
 	else
 	{
-		st0->lem1[i]->next = new_lem1(arr[0], st0->lem1[i], NULL);
-		st0->lem1[i] = st0->lem1[i]->next;
+	    if (!(check_dupl_room(st0->lem1[i], arr[0])))
+        {
+            st0->lem1[i]->next = new_lem1(arr[0], st0->lem1[i], NULL);
+            st0->lem1[i] = st0->lem1[i]->next;
+        }
+	    else
+	        error_management(st0, "ERROR: duplicate room name\n");
 	}
 	if (st0->tmp_info == START)
 		st0->start = st0->lem1[i];
@@ -215,8 +234,18 @@ int 	check_rooms1(t_lem0 *st0, char *line)
 	return (0);
 }
 
+int     check_dupl_link(t_links *link, t_lem1 *room)
+{
+    while (link)
+    {
+        if (link->connection_room == room)
+            return (1);
+        link = link->prev;
+    }
+    return (0);
+}
 
-void	check_links(t_lem0 *st0, char *line, int i)
+void	check_links(t_lem0 *st0, char *line, int i, int j)
 {
 	char	**arr;
 	int		k;
@@ -250,23 +279,26 @@ void	check_links(t_lem0 *st0, char *line, int i)
 			free_arr(arr, i);
 			error_management(st0, "ERROR: wrong link\n");
 		}
-		if (!tmp1->links)
-			tmp1->links = new_link(NULL, NULL, tmp2);
-		else
-		{
-			tmp1->links->next = new_link(tmp1->links, NULL, tmp2);
-			tmp1->links = tmp1->links->next;
-		}
-		if (!tmp2->links)
-			tmp2->links = new_link(NULL, NULL, tmp1);
-		else
-		{
-			tmp2->links->next = new_link(tmp2->links, NULL, tmp1);
-			tmp2->links = tmp2->links->next;
-		}
+		if (tmp1 != tmp2)
+        {
+            if (!tmp1->links)
+                tmp1->links = new_link(NULL, NULL, tmp2);
+            else if (!(j = check_dupl_link(tmp1->links, tmp2)))
+            {
+                tmp1->links->next = new_link(tmp1->links, NULL, tmp2);
+                tmp1->links = tmp1->links->next;
+            }
+            if (!tmp2->links)
+                tmp2->links = new_link(NULL, NULL, tmp1);
+            else if (!j)
+            {
+                tmp2->links->next = new_link(tmp2->links, NULL, tmp1);
+                tmp2->links = tmp2->links->next;
+            }
+            if (!tmp1->links || !tmp2->links)
+                error_management(st0, "ERROR: memory wasn't allocated\n");
+        }
 		free_arr(arr, i);
-		if (!tmp1->links || !tmp2->links)
-			error_management(st0, "ERROR: memory wasn't allocated\n");
 	}
 	st0->print->next = ft_lstnew(line, ft_strlen(line) + 1);
 	st0->print = st0->print->next;
@@ -329,7 +361,7 @@ void	parsing(char *av, int i, int j)
 		else if (j == 0)
 			j = check_rooms1(st0, line);
 		if (j)
-			check_links(st0, line, 0);
+			check_links(st0, line, 0, 0);
 		free(line);
 	}
 	check_conditions(st0);

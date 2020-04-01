@@ -189,6 +189,9 @@ void    	ways_creator(t_lem1 *current_vertex, t_lem0 *st0,
 int *i, t_sol_links **way_keeper);
 void		queue_creator(t_lem1 **current_vertex,
 t_queue **queue, t_links **buff_links, bool state);
+void		memory_deleter_1(t_lem0 *st0);
+void		ways_deleter(t_solution *solution);
+void		rooms_deleter(t_lem0 *st0);
 // end of gtapioca's functions
 
 #endif

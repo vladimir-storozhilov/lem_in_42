@@ -14,7 +14,7 @@ SRC_C = lem_atoi.c lem_in_bfs.c lem_in_bfs_2.c lem_in_bfs_3.c\
 		lem_in_bfs_expand.c lem_split.c main.c move_ants_1.c\
 		lem_in_bfs_expand_2.c lem_in_bfs_expand_3.c\
 		lem_in_bfs_expand_4.c lem_in_bfs_expand_5.c\
-		lem_in_bfs_expand_6.c\
+		lem_in_bfs_expand_6.c memory_deleter.c\
 
 SRC = $(addprefix $(SRC_DIR),$(SRC_C))
 

@@ -6,7 +6,7 @@
 /*   By: gtapioca <gtapioca@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 20:55:25 by gtapioca          #+#    #+#             */
-/*   Updated: 2020/03/31 00:06:41 by gtapioca         ###   ########.fr       */
+/*   Updated: 2020/04/01 22:55:21 by gtapioca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ t_links *is_vertex_has_negative_links(t_lem1 *current_vertex, t_queue *buff_queu
 		while (buff_link2 != 0 &&
 			buff_link2->connection_room != current_vertex)
 				buff_link2 = buff_link2->prev;
-		if (buff_link2 != 0 && buff_link2->weight == -1 &&
-			buff_link2->connection_room == current_vertex
+		if (buff_link2 != 0 && buff_link2->weight == -1
+			&& buff_link2->connection_room == current_vertex
 				&& buff_queue->state == false)
 			{
 				if (buff_link->weight != -1)

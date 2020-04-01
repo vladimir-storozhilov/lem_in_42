@@ -6,7 +6,7 @@
 /*   By: gtapioca <gtapioca@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 15:18:27 by gtapioca          #+#    #+#             */
-/*   Updated: 2020/03/31 00:04:14 by gtapioca         ###   ########.fr       */
+/*   Updated: 2020/04/02 00:10:24 by gtapioca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void breadth_first_search_2(t_lem0 *st0)
 		st0->solution->prev->sol_links = way_keeper;
 		st0->solution = st0->solution->prev;
 	}
+	// int c;
+	// c = 0;
 	// t_links *help;
 	// while (buff_keeper)
 	// {
@@ -45,9 +47,11 @@ void breadth_first_search_2(t_lem0 *st0)
 	//         printf("%s ",  help->connection_room->room_name);
 	//         help = help->next;
 	//     }
+	// 	c++;
 	//     printf("\n");
 	//     buff_keeper = buff_keeper->next;
 	// }
+	// // printf("\n%d\n", c);
 	// printf("\n");
 }
 

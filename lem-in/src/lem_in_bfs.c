@@ -6,7 +6,7 @@
 /*   By: gtapioca <gtapioca@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 19:09:00 by gtristan          #+#    #+#             */
-/*   Updated: 2020/03/30 23:06:03 by gtapioca         ###   ########.fr       */
+/*   Updated: 2020/04/01 22:28:16 by gtapioca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,25 @@ t_queue **queue, t_queue **buff_queue, t_lem0 *st0)
 void parents_deleter(t_lem0 *st0)
 {
 	t_lem1 *buff_lem;
+	// t_lem1 *buff_lem1;
+	// t_parents *buff_parents;
 	int i;
 
 	i = 0;
 	while (i < 10)
 	{
-		buff_lem = (st0->lem1)[i];
+		buff_lem = st0->lem1[i];
 		while (buff_lem)
 		{
+			// buff_lem->parents = NULL;
+			// while(buff_lem->current)
+			// {
+			// 	if (buff_lem->current->prev)
+			// 		buff_lem->current->prev->vertex->current = 0;
+			// 	buff_parents = buff_lem->current;
+			// 	buff_lem->current = buff_lem->current->prev;
+			// 	free(buff_parents);
+			// }
 			free(buff_lem->current);
 			buff_lem->current = NULL;
 			buff_lem->parents = NULL;

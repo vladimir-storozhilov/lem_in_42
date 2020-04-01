@@ -6,7 +6,7 @@
 /*   By: gtapioca <gtapioca@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 20:56:54 by gtapioca          #+#    #+#             */
-/*   Updated: 2020/03/31 00:07:47 by gtapioca         ###   ########.fr       */
+/*   Updated: 2020/04/01 23:51:43 by gtapioca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,10 @@ t_queue **buff_queue, t_lem1 **current_vertex, t_lem0 *st0)
 	if ((*buff_queue)->state == false &&
 		(buff_links = is_vertex_has_negative_links(*current_vertex, *buff_queue)))
 	{
-		if (buff_links->connection_room != st0->start)
+		if (buff_links->connection_room != st0->start 
+			&& buff_links->connection_room->parents == 0)
 			queue_creator(current_vertex, queue, &buff_links, true);
-		else
+		else if (buff_links->connection_room == st0->start)
 			parents_deleter_current_vertex(*current_vertex);
 	}
 	else

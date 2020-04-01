@@ -6,7 +6,7 @@
 /*   By: gtapioca <gtapioca@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 19:09:00 by gtristan          #+#    #+#             */
-/*   Updated: 2020/03/31 00:02:27 by gtapioca         ###   ########.fr       */
+/*   Updated: 2020/04/02 00:09:55 by gtapioca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	way_keeper_modifier(bool criterion, t_sol_links *way_keeper,
 	if (arr[1] == 0 && criterion == false)
 	{
 		free(way_keeper);
-		error_management(st0, "no way\n");
+		error_management(st0, "ERROR: no way\n");
 	}
 	arr[1]++;
 }
@@ -49,6 +49,7 @@ t_sol_links *breadth_first_search_helper(t_lem0 *st0, t_sol_links *way_keeper)
 			criterion = false;
 		arr[0] = 1;
 		parents_deleter(st0);
+		queue_deleter(buff_queue);
 		way_keeper_modifier(criterion, way_keeper, st0, arr);
 	}
 	return (way_keeper);
@@ -66,18 +67,19 @@ void breadth_first_search(t_lem0 *st0)
 	st0->solution->prev = 0;
 	st0->solution->sol_links = buff_keeper;
 	// t_links *help;
-	// int c;
-	// c = 0;
+	// // int c;
+	// // c = 0;
 	// while (buff_keeper)
 	// {
 	//     help = buff_keeper->links;
 	//     while(help)
 	//     {
 	//         printf("%s ", help->connection_room->room_name);
-	//         if (help->connection_room != st0->end)
-	//             c++;
+	//         // if (help->connection_room != st0->end)
+	//         //     c++;
 	//         help = help->next;
 	//     }
+	// 	// c++;
 	//     printf("\n");
 	//     buff_keeper = buff_keeper->next;
 	// }
@@ -85,4 +87,5 @@ void breadth_first_search(t_lem0 *st0)
 	// printf("%d\n", c);
 	bfs_expand(st0);
 	calc_length(st0);
+	memory_deleter_1(st0);
 }

@@ -25,6 +25,6 @@ int			atoi_lem(char *str, t_lem0 *st0)
 	}
 	if ((res > 2147483647 && sign == 1) || (res > 2147483648 && sign == -1)
 		|| len > 11 || str[len] || (len == 1 && err == 1))
-		error_management(st0, "ERROR: wrong number of ants\n");
+		error_management(st0, "ERROR: wrong number of ants or wrong coordinate\n");
 	return ((int)res * sign);
 }
